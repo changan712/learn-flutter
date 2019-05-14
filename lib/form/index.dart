@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'new-route.dart';
 
 class MyApp extends StatelessWidget {
   @override
@@ -25,29 +26,39 @@ class _SwitchAndCheckBoxTestState extends State<_SwitchAndCheckBoxTestRoute> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('form'),),
-        body: Column(
-      children: <Widget>[
-        Switch(
-          value: _switchSelected, //当前状态
-          onChanged: (value) {
-            //重新构建页面
-            setState(() {
-              _switchSelected = value;
-            });
-          },
+        appBar: AppBar(
+          title: Text('form'),
         ),
-        Checkbox(
-          value: _checkboxSelected,
-          activeColor: Colors.blue
-          , //选中时的颜色
-          onChanged: (value) {
-            setState(() {
-              _checkboxSelected = value;
-            });
-          },
-        )
-      ],
-    ));
+        body: Column(
+          children: <Widget>[
+            Switch(
+              value: _switchSelected, //当前状态
+              onChanged: (value) {
+                //重新构建页面
+                setState(() {
+                  _switchSelected = value;
+                });
+              },
+            ),
+            Checkbox(
+              value: _checkboxSelected,
+              activeColor: Colors.blue, //选中时的颜色
+              onChanged: (value) {
+                setState(() {
+                  _checkboxSelected = value;
+                });
+              },
+            ),
+            FlatButton(
+              child: Text('new route'),
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    new MaterialPageRoute(
+                        builder: (context) => new NewRoute()));
+              },
+            )
+          ],
+        ));
   }
 }
