@@ -6,9 +6,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return new MaterialApp(
-        title: 'Flutter Demo',
-        theme: new ThemeData(primarySwatch: Colors.blue),
-        home: new _SwitchAndCheckBoxTestRoute());
+      title: 'Flutter Demo',
+      theme: new ThemeData(primarySwatch: Colors.blue),
+      home: new _SwitchAndCheckBoxTestRoute(),
+      routes: {'newPage': (context) => NewRoute()},
+    );
   }
 }
 
@@ -52,10 +54,11 @@ class _SwitchAndCheckBoxTestState extends State<_SwitchAndCheckBoxTestRoute> {
             FlatButton(
               child: Text('new route'),
               onPressed: () {
-                Navigator.push(
+                Navigator.pushNamed(context, 'newPage');
+                /*Navigator.push(
                     context,
                     new MaterialPageRoute(
-                        builder: (context) => new NewRoute()));
+                        builder: (context) => new NewRoute()));*/
               },
             )
           ],
